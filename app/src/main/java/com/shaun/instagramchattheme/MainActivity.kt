@@ -7,11 +7,15 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.shaun.instagramchattheme.ui.MessageScreen
 import com.shaun.instagramchattheme.ui.theme.InstagramChatThemeTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        val splashScreen = installSplashScreen()
+
+
         super.onCreate(savedInstanceState)
         setContent {
             InstagramChatThemeTheme {

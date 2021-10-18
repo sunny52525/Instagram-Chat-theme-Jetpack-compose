@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Android_development/Instagramchattheme/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.17604166666666668" />
+        <entry key="..\:/Android_development/Instagramchattheme/app/src/main/res/drawable/camera.xml" value="0.32407407407407407" />
+        <entry key="..\:/Android_development/Instagramchattheme/app/src/main/res/drawable/image.xml" value="0.32788559754851887" />
+        <entry key="..\:/Android_development/Instagramchattheme/app/src/main/res/drawable/mic.xml" value="0.32407407407407407" />
+        <entry key="..\:/Android_development/Instagramchattheme/app/src/main/res/drawable/phone.xml" value="0.32407407407407407" />
+        <entry key="..\:/Android_development/Instagramchattheme/app/src/main/res/drawable/videocam.xml" value="0.32407407407407407" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>

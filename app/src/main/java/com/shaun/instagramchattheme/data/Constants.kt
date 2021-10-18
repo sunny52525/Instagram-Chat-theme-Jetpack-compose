@@ -74,7 +74,7 @@ object Constants {
             MessagePosition.SINGLE
         )
     )
-    val messagesMerged = messages + messages + messages + messages
+    val messagesMerged : ArrayList<Message> = ((messages + messages + messages + messages) as ArrayList<Message>)
 
 
 }
