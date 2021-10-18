@@ -36,7 +36,7 @@ fun MessageScreen() {
     }
     val scope = rememberCoroutineScope()
 
-    var messages: ArrayList<Message> by remember {
+    var messages: List<Message> by remember {
         mutableStateOf(Constants.messagesMerged)
     }
     val screenHeight = LocalConfiguration.current.screenHeightDp.toFloat()
@@ -146,22 +146,18 @@ fun MessageScreen() {
                 message = it
             }) {
 
-            val mess = messages
-            messages = arrayListOf()
-
-            messages = mess.also {
-                it.add(
-                    Message(
-                        message = message,
-                        messagePosition = MessagePosition.TOP,
-                        type = MessageType.SENT
-                    )
+            val merged = messages + listOf(
+                Message(
+                    message = message,
+                    messagePosition = MessagePosition.BOTTOM,
+                    type = MessageType.SENT
                 )
+            )
+            messages = merged.mapIndexed { index, message ->
+                message.copy(messagePosition = message.getPosition(index = index, merged))
             }
 
-
             scope.launch {
-
                 scrollState.scrollToItem(index = messages.lastIndex - 1, 0)
             }
 
@@ -181,5 +177,26 @@ fun Float.getOffset(screenHeight: Float): Float {
     if (this < 0) return 0f
     if (this > screenHeight) return screenHeight
     return this
+}
+
+
+fun Message.getPosition(
+    index: Int,
+    list: List<Message>
+): MessagePosition {
+    val size = list.size
+
+    return if (index == size - 1)
+        MessagePosition.BOTTOM
+    else if (index == 0)
+        MessagePosition.TOP
+    else if (list[index - 1].type == MessageType.RECEIVED)
+        MessagePosition.TOP
+    else if (list[index - 1].type == MessageType.SENT && list[index + 1].type == MessageType.SENT)
+        MessagePosition.MIDDLE
+    else if (list[index - 1].type == MessageType.SENT)
+        MessagePosition.BOTTOM
+    else MessagePosition.MIDDLE
+
 }
 
